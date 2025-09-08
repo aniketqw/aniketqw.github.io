@@ -540,6 +540,10 @@
             </div>
         </div>
     </section>
+
+<!-- Replace your current projects section with this complete working version -->
+<!-- This solution embeds everything in the HTML for immediate functionality -->
+
 <!-- Projects Section -->
 <section id="projects" class="py-20 relative lazy-section">
     <div class="container mx-auto px-6">
@@ -547,126 +551,34 @@
             <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
                 Featured <span class="gradient-text">Projects</span>
             </h2>
-            <p class="text-gray-400 mb-12 reveal" style="animation-delay: 0.1s">
+            <p class="text-gray-400 mb-8 reveal" style="animation-delay: 0.1s">
                 Explore my latest work in AI, machine learning, and full-stack development
             </p>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: Healthy AI Expert -->
-                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.2s">
-                    <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
-                        <div class="aspect-video overflow-hidden">
-                            <img 
-                                src="images/healthyAiExpert.png"
-                                alt="Screenshot of Healthy AI Expert wellness platform"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                loading="lazy"
-                            >
-                        </div>
-                    </a>
-                    <div class="p-6 relative z-10">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-2xl font-bold">Healthy AI Expert</h3>
-                            <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
-                        </div>
-                        <p class="text-gray-400 mb-4">AI-powered personalized wellness recommendation platform using NLP and machine learning.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">Python</span>
-                            <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full">NLP</span>
-                            <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full">TensorFlow</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
-                                <span>View Project</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
-                            <button onclick="openProjectModal('wellness')" class="text-gray-400 hover:text-white transition-colors">
-                                Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Emotion Detection -->
-                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.3s">
-                    <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
-                        <div class="aspect-video overflow-hidden">
-                            <img 
-                                src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                alt="Emotion Detection"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                loading="lazy"
-                            >
-                        </div>
-                    </a>
-                    <div class="p-6 relative z-10">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-2xl font-bold">Emotion Detection</h3>
-                            <span class="text-xs px-2 py-1 bg-blue-900/30 text-blue-400 rounded-full">Demo</span>
-                        </div>
-                        <p class="text-gray-400 mb-4">Deep learning model for accurate facial feature detection using CNN and ResNet architectures.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">Python</span>
-                            <span class="text-xs px-3 py-1 bg-red-900/30 text-red-400 rounded-full">CNN</span>
-                            <span class="text-xs px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full">ResNet</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
-                                <span>View Project</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
-                            <button onclick="openProjectModal('emotion')" class="text-gray-400 hover:text-white transition-colors">
-                                Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: GitHub Repository Analyzer -->
-                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.4s">
-                    <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
-                        <div class="aspect-video overflow-hidden">
-                            <img 
-                                src="images/GithubRepoAnalyzer.png"
-                                alt="Screenshot of GitHub Repository Analyzer"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                loading="lazy"
-                            >
-                        </div>
-                    </a>
-                    <div class="p-6 relative z-10">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-2xl font-bold">GitHub Repository Analyzer</h3>
-                            <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
-                        </div>
-                        <p class="text-gray-400 mb-4">A comprehensive React application for analyzing GitHub repositories with AI-powered natural language search capabilities.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">React</span>
-                            <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full">Docker</span>
-                            <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full">AI</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
-                                <span>View Project</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                </svg>
-                            </a>
-                            <button onclick="openProjectModal('repoanalyzer')" class="text-gray-400 hover:text-white transition-colors">
-                                Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Filter Buttons Container -->
+            <div id="project-filters" class="flex flex-wrap gap-2 mb-12 reveal" style="animation-delay: 0.2s">
+                <button class="filter-button active px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-all" onclick="filterProjects('all')">
+                    All Projects
+                </button>
+                <button class="filter-button px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-all" onclick="filterProjects('ai')">
+                    AI/ML
+                </button>
+                <button class="filter-button px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-all" onclick="filterProjects('web')">
+                    Web Dev
+                </button>
+                <button class="filter-button px-4 py-2 bg-gray-800 rounded-full text-sm hover:bg-gray-700 transition-all" onclick="filterProjects('docker')">
+                    Docker
+                </button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically inserted here -->
             </div>
             
             <!-- Load More Button -->
             <div class="text-center mt-12 reveal-scale" style="animation-delay: 0.5s">
-                <button id="load-more-projects" class="magnetic glow px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all">
+                <button id="load-more-projects" class="magnetic glow px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all" onclick="loadMoreProjects()">
                     Load More Projects
                 </button>
             </div>
@@ -675,50 +587,253 @@
 </section>
 
 <style>
-    /* Ensure the project card hover effect doesn't block interactions */
-    .project-card {
-        position: relative;
+    /* Filter button active state */
+    .filter-button.active {
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+        color: white;
+    }
+    
+    /* Line clamp for descriptions */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
         overflow: hidden;
-        transform-style: preserve-3d;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .project-card:hover {
-        transform: translateY(-10px) rotateX(5deg);
-    }
-    
-    .project-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
+    /* Pop-in animation for tags */
+    .pop-in {
         opacity: 0;
-        transition: opacity 0.3s;
-        pointer-events: none; /* Prevents blocking clicks */
-        z-index: 0;
+        transform: scale(0);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
     
-    .project-card:hover::before {
+    .pop-in.active {
         opacity: 1;
-    }
-    
-    /* Ensure proper grid layout on all screen sizes */
-    @media (min-width: 768px) {
-        #projects .grid {
-            display: grid !important;
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        }
-    }
-    
-    @media (min-width: 1024px) {
-        #projects .grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        }
+        transform: scale(1);
     }
 </style>
+
+<script>
+// Embedded projects data and management system
+(function() {
+    //ADD NEW PROJECTS HERE
+    // Projects data
+    const projectsData = [
+        {
+            id: "healthy-ai-expert",
+            title: "Healthy AI Expert",
+            description: "AI-powered personalized wellness recommendation platform using NLP and machine learning.",
+            image: "images/healthyAiExpert.png",
+            link: "https://huggingface.co/spaces/Phoenix21/HealthyAiExpert",
+            github: null,
+            status: "Live",
+            category: "ai",
+            tags: ["Python", "NLP", "TensorFlow"],
+            featured: true
+        },
+        {
+            id: "emotion-detection",
+            title: "Emotion Detection",
+            description: "Deep learning model for accurate facial feature detection using CNN and ResNet architectures.",
+            image: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            link: "https://github.com/aniketqw/EmotionKeyFacialPointDetection",
+            github: "https://github.com/aniketqw/EmotionKeyFacialPointDetection",
+            status: "Demo",
+            category: "ai",
+            tags: ["Python", "CNN", "ResNet"],
+            featured: true
+        },
+        {
+            id: "github-repo-analyzer",
+            title: "GitHub Repository Analyzer",
+            description: "React application for analyzing GitHub repositories with AI-powered natural language search capabilities.",
+            image: "images/GithubRepoAnalyzer.png",
+            link: "https://github-repo-analyzer1-latest.onrender.com/",
+            github: null,
+            status: "Live",
+            category: "web",
+            tags: ["React", "Docker", "AI"],
+            featured: true
+        },
+        {
+            id: "ainews-v2",
+            title: "AiNews V2",
+            description: "Generates daily AI news blog by searching latest AI articles online and categorizing them into sections.",
+            image: "https://images.unsplash.com/photo-1504711434969-e65cc6a4a00e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            link: "https://huggingface.co/spaces/Phoenix21/AiNewsV2",
+            status: "Live",
+            category: "ai",
+            tags: ["Python", "NLP", "Web Scraping"]
+        },
+        {
+            id: "arm-qa-chatbot",
+            title: "ARM Based QA Chatbot",
+            description: "Advanced retrieval-augmented generation (RAG) based question-answering chatbot for efficient knowledge retrieval.",
+            image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            link: "https://huggingface.co/spaces/Phoenix21/ARM_BASED_QA_CHATBOT",
+            status: "Live",
+            category: "ai",
+            tags: ["Python", "LangChain", "RAG"]
+        },
+        {
+            id: "medical-dataset-generator",
+            title: "Medical Health Dataset Generator",
+            description: "Generates synthetic health optimization datasets by simulating medical studies and creating health profiles.",
+            image: "https://images.unsplash.com/photo-1576091160399-112ba03915da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+            link: "https://huggingface.co/spaces/Phoenix21/MedicalHealthDatasetGenerator",
+            status: "Live",
+            category: "ai",
+            tags: ["Python", "Pandas", "ML"]
+        }
+    ];
+
+    // Configuration
+    const statusColors = {
+        'Live': 'bg-green-900/30 text-green-400',
+        'Demo': 'bg-blue-900/30 text-blue-400',
+        'Beta': 'bg-yellow-900/30 text-yellow-400',
+        'Docker': 'bg-purple-900/30 text-purple-400'
+    };
+
+    const tagColors = [
+        'bg-blue-900/30 text-blue-400',
+        'bg-purple-900/30 text-purple-400',
+        'bg-green-900/30 text-green-400',
+        'bg-yellow-900/30 text-yellow-400',
+        'bg-red-900/30 text-red-400'
+    ];
+
+    // State
+    let currentFilter = 'all';
+    let projectsShown = 6;
+    const projectsPerLoad = 3;
+
+    // Create project card HTML
+    function createProjectCard(project, index) {
+        const statusColor = statusColors[project.status] || 'bg-gray-900/30 text-gray-400';
+        const tagsHTML = project.tags.map((tag, i) => 
+            `<span class="text-xs px-3 py-1 ${tagColors[i % tagColors.length]} rounded-full">${tag}</span>`
+        ).join('');
+
+        return `
+            <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale ${project.featured ? 'border-blue-800/50' : ''}" style="animation-delay: ${index * 0.1}s">
+                ${project.featured ? '<div class="absolute top-3 right-3 z-20"><span class="text-xs px-2 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full">Featured</span></div>' : ''}
+                <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
+                    <div class="aspect-video overflow-hidden bg-gray-800">
+                        <img 
+                            src="${project.image}"
+                            alt="${project.title}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+                        >
+                    </div>
+                </a>
+                <div class="p-6 relative z-10">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-2xl font-bold">${project.title}</h3>
+                        <span class="text-xs px-2 py-1 ${statusColor} rounded-full">${project.status}</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 line-clamp-2">${project.description}</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${tagsHTML}
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                            <span>View Project</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Render projects
+    function renderProjects(filter = 'all', reset = true) {
+        const grid = document.getElementById('projects-grid');
+        const loadMoreBtn = document.getElementById('load-more-projects');
+        
+        if (reset) {
+            projectsShown = projectsPerLoad;
+            grid.innerHTML = '';
+        }
+
+        // Filter projects
+        let filteredProjects = filter === 'all' 
+            ? projectsData 
+            : projectsData.filter(p => p.category === filter);
+
+        // Sort featured first
+        filteredProjects.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+        // Get projects to display
+        const projectsToDisplay = filteredProjects.slice(0, projectsShown);
+
+        // Render projects
+        if (reset) {
+            grid.innerHTML = projectsToDisplay.map((project, index) => 
+                createProjectCard(project, index)
+            ).join('');
+        } else {
+            const newProjects = filteredProjects.slice(projectsShown - projectsPerLoad, projectsShown);
+            const newHTML = newProjects.map((project, index) => 
+                createProjectCard(project, index + (projectsShown - projectsPerLoad))
+            ).join('');
+            grid.insertAdjacentHTML('beforeend', newHTML);
+        }
+
+        // Update load more button
+        if (projectsShown >= filteredProjects.length) {
+            loadMoreBtn.textContent = 'All Projects Loaded';
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        } else {
+            loadMoreBtn.textContent = 'Load More Projects';
+            loadMoreBtn.disabled = false;
+            loadMoreBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        // Trigger animations
+        setTimeout(() => {
+            document.querySelectorAll('.reveal-scale:not(.active)').forEach(el => {
+                el.classList.add('active');
+            });
+        }, 100);
+    }
+
+    // Filter projects
+    window.filterProjects = function(category) {
+        currentFilter = category;
+        
+        // Update active button
+        document.querySelectorAll('.filter-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        renderProjects(category, true);
+    };
+
+    // Load more projects
+    window.loadMoreProjects = function() {
+        projectsShown += projectsPerLoad;
+        renderProjects(currentFilter, false);
+    };
+
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => renderProjects('all', true));
+    } else {
+        renderProjects('all', true);
+    }
+})();
+</script>
+
+
 
     <!-- Experience Section -->
     <section id="experience" class="py-20 relative">
@@ -1224,44 +1339,44 @@
                 if (loadMoreBtn) {
                     loadMoreBtn.addEventListener('click', function() {
                         const projectsContainer = this.parentElement.previousElementSibling;
-                        const newProjects = [
-                            {
-                                title: 'AiNews V2',
-                                description: 'This application generates a daily AI news blog by searching for the latest AI news articles online, categorizing them into sections like technology, business.',
-                                tags: ['Python', 'NLP', 'Web Scraping'],
-                                image: 'https://images.unsplash.com/photo-1504711434969-e65cc6a4a00e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                                link: 'https://huggingface.co/spaces/Phoenix21/AiNewsV2',
-                                status: 'Live',
-                                statusBg: 'bg-green-900/30',
-                                statusText: 'text-green-400',
-                                tagColors: ['bg-blue-900/30 text-blue-400', 'bg-purple-900/30 text-purple-400', 'bg-green-900/30 text-green-400'],
-                                modal: 'ainews'
-                            },
-                            {
-                                title: 'ARM Based QA Chatbot',
-                                description: 'An advanced retrieval-augmented generation (RAG) based question-answering chatbot for efficient knowledge retrieval and response generation.',
-                                tags: ['Python', 'LangChain', 'RAG'],
-                                image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                                link: 'https://huggingface.co/spaces/Phoenix21/ARM_BASED_QA_CHATBOT',
-                                status: 'Live',
-                                statusBg: 'bg-green-900/30',
-                                statusText: 'text-green-400',
-                                tagColors: ['bg-blue-900/30 text-blue-400', 'bg-red-900/30 text-red-400', 'bg-yellow-900/30 text-yellow-400'],
-                                modal: 'armchatbot'
-                            },
-                            {
-                                title: 'Medical Health Dataset Generator',
-                                description: 'This app generates synthetic health optimization datasets by simulating medical studies and creating detailed health profiles and protocols.',
-                                tags: ['Python', 'Pandas', 'Machine Learning'],
-                                image: 'https://images.unsplash.com/photo-1576091160399-112ba03915da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-                                link: 'https://huggingface.co/spaces/Phoenix21/MedicalHealthDatasetGenerator',
-                                status: 'Live',
-                                statusBg: 'bg-green-900/30',
-                                statusText: 'text-green-400',
-                                tagColors: ['bg-purple-900/30 text-purple-400', 'bg-green-900/30 text-green-400', 'bg-blue-900/30 text-blue-400'],
-                                modal: 'medicaldataset'
-                            }
-                        ];
+                        // const newProjects = [
+                        //     {
+                        //         title: 'AiNews V2',
+                        //         description: 'This application generates a daily AI news blog by searching for the latest AI news articles online, categorizing them into sections like technology, business.',
+                        //         tags: ['Python', 'NLP', 'Web Scraping'],
+                        //         image: 'https://images.unsplash.com/photo-1504711434969-e65cc6a4a00e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        //         link: 'https://huggingface.co/spaces/Phoenix21/AiNewsV2',
+                        //         status: 'Live',
+                        //         statusBg: 'bg-green-900/30',
+                        //         statusText: 'text-green-400',
+                        //         tagColors: ['bg-blue-900/30 text-blue-400', 'bg-purple-900/30 text-purple-400', 'bg-green-900/30 text-green-400'],
+                        //         modal: 'ainews'
+                        //     },
+                        //     {
+                        //         title: 'ARM Based QA Chatbot',
+                        //         description: 'An advanced retrieval-augmented generation (RAG) based question-answering chatbot for efficient knowledge retrieval and response generation.',
+                        //         tags: ['Python', 'LangChain', 'RAG'],
+                        //         image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        //         link: 'https://huggingface.co/spaces/Phoenix21/ARM_BASED_QA_CHATBOT',
+                        //         status: 'Live',
+                        //         statusBg: 'bg-green-900/30',
+                        //         statusText: 'text-green-400',
+                        //         tagColors: ['bg-blue-900/30 text-blue-400', 'bg-red-900/30 text-red-400', 'bg-yellow-900/30 text-yellow-400'],
+                        //         modal: 'armchatbot'
+                        //     },
+                        //     {
+                        //         title: 'Medical Health Dataset Generator',
+                        //         description: 'This app generates synthetic health optimization datasets by simulating medical studies and creating detailed health profiles and protocols.',
+                        //         tags: ['Python', 'Pandas', 'Machine Learning'],
+                        //         image: 'https://images.unsplash.com/photo-1576091160399-112ba03915da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                        //         link: 'https://huggingface.co/spaces/Phoenix21/MedicalHealthDatasetGenerator',
+                        //         status: 'Live',
+                        //         statusBg: 'bg-green-900/30',
+                        //         statusText: 'text-green-400',
+                        //         tagColors: ['bg-purple-900/30 text-purple-400', 'bg-green-900/30 text-green-400', 'bg-blue-900/30 text-blue-400'],
+                        //         modal: 'medicaldataset'
+                        //     }
+                        // ];
                         
                         newProjects.forEach((project, index) => {
                             const projectCard = document.createElement('div');
