@@ -540,255 +540,185 @@
             </div>
         </div>
     </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 relative lazy-section">
-        <div class="container mx-auto px-6">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
-                    Featured <span class="gradient-text">Projects</span>
-                </h2>
-                <p class="text-gray-400 mb-12 reveal" style="animation-delay: 0.1s">
-                    Explore my latest work in AI, machine learning, and full-stack development
-                </p>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
-                     <style>
-                        .project-card::before {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
-                            opacity: 0;
-                            transition: opacity 0.3s;
-                            pointer-events: none; /* Add this to prevent blocking clicks */
-                            z-index: 0; /* Ensure it's behind content */
-                        }
-                    </style>
-                    <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.2s">
-                        <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10"> <!-- Add cursor-pointer and z-index -->
-                            <div class="aspect-video overflow-hidden">
-                                <img 
-                                    src="images/healthyAiExpert.png"
-                                    alt="Screenshot of Healthy AI Expert wellness platform"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    loading="lazy"
-                                >
-                            </div>
-                        </a>
-                        <div class="p-6 relative z-10"> <!-- Add z-index to ensure content is above -->
-                            <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-2xl font-bold">Healthy AI Expert</h3>
-                                <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">AI-powered personalized wellness recommendation platform using NLP and machine learning.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full pop-in" style="animation-delay: 0.3s">Python</span>
-                                <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full pop-in" style="animation-delay: 0.4s">NLP</span>
-                                <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full pop-in" style="animation-delay: 0.5s">TensorFlow</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 cursor-pointer">
-                                    <span>View Project</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                    </svg>
-                                </a>
-                                <button onclick="openProjectModal('wellness')" class="text-gray-400 hover:text-white transition-colors">
-                                    Details
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.2s">
+<!-- Projects Section -->
+<section id="projects" class="py-20 relative lazy-section">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 reveal">
+                Featured <span class="gradient-text">Projects</span>
+            </h2>
+            <p class="text-gray-400 mb-12 reveal" style="animation-delay: 0.1s">
+                Explore my latest work in AI, machine learning, and full-stack development
+            </p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Healthy AI Expert -->
+                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.2s">
+                    <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
                         <div class="aspect-video overflow-hidden">
-                            <div class="skeleton w-full h-full"></div>
                             <img 
-                                data-src="images/healthyAiExpert.png" 
-                                alt="healthyAiExpert"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 lazy"
+                                src="images/healthyAiExpert.png"
+                                alt="Screenshot of Healthy AI Expert wellness platform"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 loading="lazy"
                             >
                         </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-2xl font-bold">Healthy AI Expert</h3>
-                                <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">AI-powered personalized wellness recommendation platform using NLP and machine learning.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full pop-in" style="animation-delay: 0.3s">Python</span>
-                                <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full pop-in" style="animation-delay: 0.4s">NLP</span>
-                                <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full pop-in" style="animation-delay: 0.5s">TensorFlow</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
-                                    <span>View Project</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                    </svg>
-                                </a>
-                                <button onclick="openProjectModal('wellness')" class="text-gray-400 hover:text-white transition-colors">
-                                    Details
-                                </button>
-                            </div>
+                    </a>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-2xl font-bold">Healthy AI Expert</h3>
+                            <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
                         </div>
-                    </div> -->
-                    
-
-                    <!-- Project 2 -->
-                    <style>
-                        .project-card::before {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
-                            opacity: 0;
-                            transition: opacity 0.3s;
-                            pointer-events: none; /* Add this to prevent blocking clicks */
-                            z-index: 0; /* Ensure it's behind content */
-                        }
-                    </style>
-                    <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.3s">
-                        <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10"> <!-- Add cursor-pointer and z-index -->
-                            <div class="aspect-video overflow-hidden">
-                                <img 
-                                    src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                                    alt="Emotion Detection"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    loading="lazy"
-                                >
-                            </div>
-                        </a>
-                        <div class="p-6 relative z-10"> <!-- Add z-index to ensure content is above -->
-                            <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-2xl font-bold">Emotion Detection</h3>
-                                <span class="text-xs px-2 py-1 bg-blue-900/30 text-blue-400 rounded-full">Demo</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Deep learning model for accurate facial feature detection using CNN and ResNet architectures.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full pop-in" style="animation-delay: 0.4s">Python</span>
-                                <span class="text-xs px-3 py-1 bg-red-900/30 text-red-400 rounded-full pop-in" style="animation-delay: 0.5s">CNN</span>
-                                <span class="text-xs px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full pop-in" style="animation-delay: 0.6s">ResNet</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 cursor-pointer">
-                                    <span>View Project</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                    </svg>
-                                </a>
-                                <button onclick="openProjectModal('emotion')" class="text-gray-400 hover:text-white transition-colors">
-                                    Details
-                                </button>
-                            </div>
+                        <p class="text-gray-400 mb-4">AI-powered personalized wellness recommendation platform using NLP and machine learning.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">Python</span>
+                            <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full">NLP</span>
+                            <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full">TensorFlow</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://huggingface.co/spaces/Phoenix21/HealthyAiExpert" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                                <span>View Project</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                            <button onclick="openProjectModal('wellness')" class="text-gray-400 hover:text-white transition-colors">
+                                Details
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Project 3 -->
-                     <style>
-                            .project-card::before {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                right: 0;
-                                bottom: 0;
-                                background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
-                                opacity: 0;
-                                transition: opacity 0.3s;
-                                pointer-events: none; /* Add this to prevent blocking clicks */
-                                z-index: 0; /* Ensure it's behind content */
-                            }
-                        </style>
-                        <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.2s">
-                            <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10"> <!-- Add cursor-pointer and z-index -->
-                                <div class="aspect-video overflow-hidden">
-                                    <img 
-                                        src="images/GithubRepoAnalyzer.png"
-                                        alt="Screenshot of GitHub Repository Analyzer"
-                                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        loading="lazy"
-                                    >
-                                </div>
-                            </a>
-                            <div class="p-6 relative z-10"> <!-- Add z-index to ensure content is above -->
-                                <div class="flex items-center justify-between mb-2">
-                                    <h3 class="text-2xl font-bold">GitHub Repository Analyzer</h3>
-                                    <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
-                                </div>
-                                <p class="text-gray-400 mb-4">A comprehensive React application for analyzing GitHub repositories with AI-powered natural language search capabilities, built with React, Material-UI, and LangChain, and fully containerized with Docker for easy deployment.</p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full pop-in" style="animation-delay: 0.3s">React</span>
-                                    <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full pop-in" style="animation-delay: 0.4s">Docker</span>
-                                    <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full pop-in" style="animation-delay: 0.5s">AI</span>
-                                </div>
-                                <div class="flex gap-4">
-                                    <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2 cursor-pointer">
-                                        <span>View Project</span>
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                        </svg>
-                                    </a>
-                                    <button onclick="openProjectModal('repoanalyzer')" class="text-gray-400 hover:text-white transition-colors">
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
+                <!-- Project 2: Emotion Detection -->
+                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.3s">
+                    <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
+                        <div class="aspect-video overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Emotion Detection"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                loading="lazy"
+                            >
                         </div>
-                
-                <!-- Load More Button -->
-                <div class="text-center mt-12 reveal-scale" style="animation-delay: 0.5s">
-                    <button id="load-more-projects" class="magnetic glow px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all">
-                        Load More Projects
-                    </button>
+                    </a>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-2xl font-bold">Emotion Detection</h3>
+                            <span class="text-xs px-2 py-1 bg-blue-900/30 text-blue-400 rounded-full">Demo</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Deep learning model for accurate facial feature detection using CNN and ResNet architectures.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">Python</span>
+                            <span class="text-xs px-3 py-1 bg-red-900/30 text-red-400 rounded-full">CNN</span>
+                            <span class="text-xs px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full">ResNet</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/aniketqw/EmotionKeyFacialPointDetection" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                                <span>View Project</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                            <button onclick="openProjectModal('emotion')" class="text-gray-400 hover:text-white transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: GitHub Repository Analyzer -->
+                <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.4s">
+                    <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="cursor-pointer block relative z-10">
+                        <div class="aspect-video overflow-hidden">
+                            <img 
+                                src="images/GithubRepoAnalyzer.png"
+                                alt="Screenshot of GitHub Repository Analyzer"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                loading="lazy"
+                            >
+                        </div>
+                    </a>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-2xl font-bold">GitHub Repository Analyzer</h3>
+                            <span class="text-xs px-2 py-1 bg-green-900/30 text-green-400 rounded-full">Live</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">A comprehensive React application for analyzing GitHub repositories with AI-powered natural language search capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full">React</span>
+                            <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full">Docker</span>
+                            <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full">AI</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github-repo-analyzer1-latest.onrender.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
+                                <span>View Project</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
+                            </a>
+                            <button onclick="openProjectModal('repoanalyzer')" class="text-gray-400 hover:text-white transition-colors">
+                                Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12 reveal-scale" style="animation-delay: 0.5s">
+                <button id="load-more-projects" class="magnetic glow px-8 py-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-all">
+                    Load More Projects
+                </button>
+            </div>
         </div>
-    </section>
-                    <!-- <div class="project-card bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden group reveal-scale" style="animation-delay: 0.4s">
-                        <div class="aspect-video overflow-hidden">
-                            <div class="skeleton w-full h-full"></div>
-                            <img 
-                                data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                                alt="MCQ Battle"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 lazy"
-                                loading="lazy"
-                            >
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-2xl font-bold">Realtime MCQ Battle</h3>
-                                <span class="text-xs px-2 py-1 bg-yellow-900/30 text-yellow-400 rounded-full">Beta</span>
-                            </div>
-                            <p class="text-gray-400 mb-4">Multiplayer quiz platform with real-time synchronization and low-latency gameplay.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="text-xs px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full pop-in" style="animation-delay: 0.5s">Node.js</span>
-                                <span class="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full pop-in" style="animation-delay: 0.6s">MongoDB</span>
-                                <span class="text-xs px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full pop-in" style="animation-delay: 0.7s">WebSocket</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-2">
-                                    <span>View Project</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                                    </svg>
-                                </a>
-                                <button onclick="openProjectModal('mcq')" class="text-gray-400 hover:text-white transition-colors">
-                                    Details
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
- 
+    </div>
+</section>
+
+<style>
+    /* Ensure the project card hover effect doesn't block interactions */
+    .project-card {
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover {
+        transform: translateY(-10px) rotateX(5deg);
+    }
+    
+    .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none; /* Prevents blocking clicks */
+        z-index: 0;
+    }
+    
+    .project-card:hover::before {
+        opacity: 1;
+    }
+    
+    /* Ensure proper grid layout on all screen sizes */
+    @media (min-width: 768px) {
+        #projects .grid {
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        #projects .grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+    }
+</style>
 
     <!-- Experience Section -->
     <section id="experience" class="py-20 relative">
