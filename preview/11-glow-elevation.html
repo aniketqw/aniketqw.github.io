@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+html,body{margin:0;background:#0a0a0a;color:#fff;padding:28px;font-family:Inter,sans-serif;}
+.lbl{font:600 10px/1 Inter;letter-spacing:2px;text-transform:uppercase;color:#666680;margin-bottom:18px;}
+.row{display:flex;gap:30px;align-items:center;}
+.glow-wrap{position:relative;}
+.glow-wrap::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:inherit;filter:blur(20px);opacity:.6;z-index:0;}
+.btn{position:relative;z-index:1;padding:14px 28px;border-radius:999px;background:#2563eb;color:#fff;font:600 14px/1 Inter;border:none;}
+.card{border:1px solid #1f2937;background:rgba(17,24,39,.5);backdrop-filter:blur(8px);border-radius:16px;padding:20px;width:240px;}
+.card h4{margin:0 0 6px;font:700 16px/1.2 Inter;}
+.card p{margin:0;font:400 13px/1.5 Inter;color:#9ca3af;}
+.tag{font:600 10px/1 'JetBrains Mono',monospace;color:#9ca3af;}
+</style></head><body>
+<div class="lbl">Elevation — glow (hover), not drop-shadow</div>
+<div class="row">
+  <div class="glow-wrap" style="border-radius:999px"><button class="btn">View My Work</button></div>
+  <div class="card"><h4>Project card</h4><p>Borders + glass, no box-shadow. Lift on hover.</p></div>
+  <span class="tag">glow: blur(20px) · opacity .6</span>
+</div>
+</body></html>

@@ -1,0 +1,218 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Aniket Saxena Portfolio — Design Tokens
+   Import this file once, then use the vars anywhere.
+     @import url('./colors_and_type.css');
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Fonts — Inter loaded locally from the brand-supplied variable files.
+   JetBrains Mono + Sora still come from Google Fonts (no local files supplied). */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('./fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+  font-variation-settings: 'opsz' 14;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('./fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+  font-variation-settings: 'opsz' 14;
+}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@300;400;600;700&display=swap');
+
+:root {
+  /* ── Base colors ───────────────────────────────────────────────────────── */
+
+  /* Canvas */
+  --bg:                #0a0a0a;         /* portfolio */
+  --bg-tool:           #0c0c0f;         /* admin / tool surfaces */
+  --surface:           #13131a;         /* admin cards, sidebars */
+  --surface-glass:     rgba(17, 24, 39, 0.30);   /* gray-900 / 30% — portfolio cards */
+  --surface-glass-50:  rgba(17, 24, 39, 0.50);   /* project cards */
+  --nav-bg:            rgba(0, 0, 0, 0.70);
+  --menu-bg:           rgba(10, 10, 10, 0.98);
+
+  /* Borders */
+  --border:            #1e1e2e;         /* admin */
+  --border-hover:      #2e2e4e;         /* admin hover */
+  --border-900:        #1f2937;         /* gray-800 — default card border */
+  --border-700:        #374151;         /* gray-700 — hover card border */
+  --border-blue:       rgba(30, 64, 175, 0.50);  /* blue-800/50 — featured card */
+
+  /* Text */
+  --fg1:               #ffffff;         /* pure white — display */
+  --fg2:               #e2e2f0;         /* admin body */
+  --fg-muted:          #9ca3af;         /* gray-400 — body copy */
+  --fg-dim:            #6b7280;         /* gray-500 — meta */
+  --fg-faint:          #4b5563;         /* gray-600 — disabled */
+  --fg-admin-muted:    #666680;         /* admin muted */
+
+  /* Brand accents — the gradient is the identity */
+  --blue:              #3b82f6;         /* primary */
+  --blue-dark:         #2563eb;         /* primary hover */
+  --blue-400:          #60a5fa;         /* link text */
+  --blue-admin:        #4f8ef7;         /* admin focus */
+  --accent:            #8b5cf6;         /* violet-500 */
+  --accent-pink:       #ec4899;         /* pink-500, used in gradient-to-pink variants */
+  --gradient:          linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-contact:  linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); /* CTA hover */
+
+  /* Status — tinted bg + solid text */
+  --status-live-bg:    rgba(20, 83, 45, 0.30);   --status-live-fg:    #4ade80;
+  --status-demo-bg:    rgba(30, 58, 138, 0.30);  --status-demo-fg:    #60a5fa;
+  --status-beta-bg:    rgba(113, 63, 18, 0.30);  --status-beta-fg:    #facc15;
+  --status-pinned-bg:  rgba(113, 63, 18, 0.30);  --status-pinned-fg:  #f5a623;
+  --status-excluded-bg:rgba(127, 29, 29, 0.30);  --status-excluded-fg:#f75f5f;
+
+  /* Tag palette (project card tags rotate through these) */
+  --tag-blue-bg:       rgba(30, 58, 138, 0.30);  --tag-blue-fg:       #60a5fa;
+  --tag-purple-bg:     rgba(76, 29, 149, 0.30);  --tag-purple-fg:     #a78bfa;
+  --tag-green-bg:      rgba(20, 83, 45, 0.30);   --tag-green-fg:      #4ade80;
+  --tag-yellow-bg:     rgba(113, 63, 18, 0.30);  --tag-yellow-fg:     #facc15;
+  --tag-red-bg:        rgba(127, 29, 29, 0.30);  --tag-red-fg:        #f87171;
+
+  /* Tinted icon frames — 20% alpha bg, 400-weight fg */
+  --icon-blue-bg:      rgba(59, 130, 246, 0.20);  --icon-blue-fg:     #60a5fa;
+  --icon-purple-bg:    rgba(139, 92, 246, 0.20);  --icon-purple-fg:   #a78bfa;
+  --icon-green-bg:     rgba(34, 197, 94, 0.20);   --icon-green-fg:    #4ade80;
+  --icon-yellow-bg:    rgba(234, 179, 8, 0.20);   --icon-yellow-fg:   #facc15;
+
+
+  /* ── Typography ────────────────────────────────────────────────────────── */
+
+  --font-display:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:         'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:         'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-tool:         'Sora', 'Inter', system-ui, sans-serif; /* admin UI */
+
+  /* Display scale (Portfolio) */
+  --t-hero:            clamp(3rem, 8vw, 8rem);  /* 48–128px, font-black */
+  --t-hero-weight:     900;
+  --t-hero-tracking:   -0.02em;
+  --t-h1:              3rem;        /* 48px */
+  --t-h2:              2.25rem;     /* 36px, md:3rem */
+  --t-h2-md:           3rem;        /* 48px */
+  --t-h3:              1.5rem;      /* 24px — experience headings */
+  --t-card-title:      1.25rem;     /* 20px */
+  --t-body-lg:         1.125rem;    /* 18px */
+  --t-body:            1rem;        /* 16px */
+  --t-small:           0.875rem;    /* 14px */
+  --t-xs:              0.75rem;     /* 12px — chips */
+  --t-xxs:             0.6875rem;   /* 11px — meta */
+
+  /* Admin labels — uppercase, tracked */
+  --t-label:           0.625rem;    /* 10px */
+  --t-label-track:     2px;
+
+  /* Line heights */
+  --lh-tight:          1.1;
+  --lh-snug:           1.3;
+  --lh-normal:         1.5;
+  --lh-relaxed:        1.75;
+
+
+  /* ── Spacing ───────────────────────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;   /* py-20 — section rhythm */
+
+  /* Radii */
+  --r-sm:     4px;
+  --r-md:     6px;
+  --r-lg:     8px;    /* rounded-lg */
+  --r-xl:     10px;   /* admin cards */
+  --r-2xl:    16px;   /* rounded-2xl — the card default */
+  --r-full:   9999px;
+
+  /* Motion */
+  --ease-std:    cubic-bezier(0.4, 0, 0.2, 1);       /* material standard */
+  --ease-pop:    cubic-bezier(0.68, -0.55, 0.265, 1.55); /* overshoot for pop-in/bounce */
+  --dur-fast:    0.15s;
+  --dur-base:    0.3s;
+  --dur-slow:    0.6s;
+  --dur-xslow:   0.8s;
+
+  /* Shadow-ish — the system uses glow, not drop-shadow */
+  --glow-blur:       20px;
+  --glow-opacity:    0.6;
+  --glow-gradient:   linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Semantic type classes — drop these on any element
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.h-hero,  h1.hero {
+  font-family: var(--font-display);
+  font-size: var(--t-hero);
+  font-weight: var(--t-hero-weight);
+  letter-spacing: var(--t-hero-tracking);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+}
+
+.h1 { font: 900 3rem/1.1 var(--font-display); letter-spacing: -0.02em; color: var(--fg1); }
+.h2 { font: 700 var(--t-h2)/1.2 var(--font-display); color: var(--fg1); }
+.h3 { font: 700 var(--t-h3)/1.3 var(--font-display); color: var(--fg1); }
+.card-title { font: 700 var(--t-card-title)/1.3 var(--font-display); color: var(--fg1); }
+
+p        { font: 400 var(--t-body)/var(--lh-relaxed) var(--font-body); color: var(--fg-muted); }
+.p-lg    { font-size: var(--t-body-lg); }
+.small   { font-size: var(--t-small); color: var(--fg-muted); }
+.meta    { font-size: var(--t-xs); color: var(--fg-dim); }
+
+.mono    { font-family: var(--font-mono); }
+.code    { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--status-live-fg); }
+
+/* Admin label — uppercase tracked 10px */
+.label {
+  font-family: var(--font-tool);
+  font-size: var(--t-label);
+  font-weight: 600;
+  letter-spacing: var(--t-label-track);
+  text-transform: uppercase;
+  color: var(--fg-admin-muted);
+}
+
+/* The signature gradient-text treatment */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Chips & pills */
+.chip {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  background: #1f2937;          /* gray-800 */
+  color: var(--fg1);
+  font-size: var(--t-small);
+  line-height: 1;
+  white-space: nowrap;
+}
+.chip-xs { padding: 2px 8px; font-size: var(--t-xs); }
+
+.tag-blue   { background: var(--tag-blue-bg);   color: var(--tag-blue-fg);   }
+.tag-purple { background: var(--tag-purple-bg); color: var(--tag-purple-fg); }
+.tag-green  { background: var(--tag-green-bg);  color: var(--tag-green-fg);  }
+.tag-yellow { background: var(--tag-yellow-bg); color: var(--tag-yellow-fg); }
+.tag-red    { background: var(--tag-red-bg);    color: var(--tag-red-fg);    }
