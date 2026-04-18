@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Admin — Repo Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0f;
+  --surface: #13131a;
+  --border: #1e1e2e;
+  --border-hover: #2e2e4e;
+  --text: #e2e2f0;
+  --muted: #666680;
+  --blue: #4f8ef7;
+  --blue-dim: #1a2a4a;
+  --green: #3de08a;
+  --green-dim: #0d2a1e;
+  --amber: #f5a623;
+  --amber-dim: #2a1f0a;
+  --red: #f75f5f;
+  --red-dim: #2a0f0f;
+  --purple: #a78bfa;
+  --purple-dim: #1e1430;
+  --radius: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', sans-serif;
+  min-height: 100vh;
+}
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Layout */
+.shell { display: grid; grid-template-columns: 280px 1fr; height: 100vh; overflow: hidden; }
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.main { overflow-y: auto; padding: 2rem; }
+
+/* Sidebar */
+.sidebar-header { padding: 1.5rem; border-bottom: 1px solid var(--border); }
+.logo { font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+.logo span { color: var(--blue); }
+
+.token-box { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+.token-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+.token-input {
+  width: 100%; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 10px; color: var(--text);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  outline: none;
+}
+.token-input:focus { border-color: var(--blue); }
+.token-input::placeholder { color: var(--muted); }
+
+.fetch-btn {
+  margin: 1rem 1.5rem; width: calc(100% - 3rem);
+  background: var(--blue); color: #fff; border: none;
+  border-radius: 6px; padding: 10px; font-weight: 600;
+  font-size: 13px; cursor: pointer; transition: opacity .2s;
+}
+.fetch-btn:hover { opacity: .85; }
+.fetch-btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.sidebar-section { padding: 1rem 1.5rem; }
+.section-title { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; }
+
+.stat-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.stat-label { font-size: 12px; color: var(--muted); }
+.stat-val { font-size: 13px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.stat-val.green { color: var(--green); }
+.stat-val.amber { color: var(--amber); }
+.stat-val.red { color: var(--red); }
+
+.legend { margin-top: auto; padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dot.pinned { background: var(--amber); }
+.dot.included { background: var(--green); }
+.dot.excluded { background: var(--red); }
+
+/* Main */
+.toolbar {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 1.5rem; flex-wrap: wrap;
+}
+.toolbar-title { font-size: 20px; font-weight: 700; flex: 1; }
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.filter-btn {
+  font-size: 11px; font-weight: 600; padding: 5px 12px;
+  border-radius: 999px; border: 1px solid var(--border);
+  background: transparent; color: var(--muted); cursor: pointer;
+  transition: all .15s;
+}
+.filter-btn:hover { border-color: var(--border-hover); color: var(--text); }
+.filter-btn.active { background: var(--blue-dim); border-color: var(--blue); color: var(--blue); }
+
+.search-input {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 14px; color: var(--text);
+  font-size: 13px; outline: none; width: 220px;
+}
+.search-input:focus { border-color: var(--blue); }
+
+.export-btn {
+  background: var(--green-dim); border: 1px solid var(--green);
+  color: var(--green); border-radius: 6px; padding: 8px 18px;
+  font-weight: 600; font-size: 13px; cursor: pointer; transition: opacity .2s;
+}
+.export-btn:hover { opacity: .8; }
+
+/* Repo grid */
+.repo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+
+.repo-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem;
+  cursor: pointer; transition: all .2s; user-select: none;
+  position: relative;
+}
+.repo-card:hover { border-color: var(--border-hover); }
+.repo-card.pinned { border-color: var(--amber); background: var(--amber-dim); }
+.repo-card.included { border-color: var(--green); }
+.repo-card.excluded { border-color: var(--red); opacity: .5; }
+
+.card-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+.card-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.card-name { font-weight: 600; font-size: 14px; line-height: 1.3; word-break: break-all; }
+.card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+
+.card-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.meta-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.lang-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+.topic-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.chip {
+  font-size: 10px; padding: 2px 7px; border-radius: 999px;
+  background: var(--blue-dim); color: var(--blue); border: 1px solid var(--border);
+}
+
+.card-actions {
+  position: absolute; top: 10px; right: 10px;
+  display: flex; gap: 4px;
+}
+.action-btn {
+  font-size: 10px; padding: 3px 8px; border-radius: 4px;
+  border: 1px solid; cursor: pointer; font-weight: 600;
+  transition: all .15s;
+}
+.pin-btn { background: var(--amber-dim); border-color: var(--amber); color: var(--amber); }
+.pin-btn:hover { background: var(--amber); color: var(--bg); }
+.pin-btn.active { background: var(--amber); color: var(--bg); }
+.excl-btn { background: var(--red-dim); border-color: var(--red); color: var(--red); }
+.excl-btn:hover { background: var(--red); color: #fff; }
+.excl-btn.active { background: var(--red); color: #fff; }
+
+/* Status badge */
+.status-badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 4px; margin-left: 6px;
+}
+.badge-live { background: var(--green-dim); color: var(--green); }
+.badge-demo { background: var(--blue-dim); color: var(--blue); }
+.badge-pinned { background: var(--amber-dim); color: var(--amber); }
+
+/* Output panel */
+.output-panel {
+  margin-top: 2rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.output-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .75rem 1rem; border-bottom: 1px solid var(--border);
+}
+.output-title { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+.copy-btn {
+  font-size: 11px; padding: 4px 12px; border-radius: 4px;
+  background: var(--purple-dim); border: 1px solid var(--purple);
+  color: var(--purple); cursor: pointer; font-weight: 600;
+}
+.copy-btn:hover { background: var(--purple); color: #fff; }
+.output-pre {
+  padding: 1rem; font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; line-height: 1.6; color: var(--green);
+  max-height: 320px; overflow-y: auto; white-space: pre-wrap;
+}
+
+/* Empty state */
+.empty { text-align: center; padding: 4rem 2rem; color: var(--muted); }
+.empty-icon { font-size: 48px; margin-bottom: 1rem; }
+.empty-msg { font-size: 16px; margin-bottom: .5rem; }
+.empty-sub { font-size: 13px; }
+
+/* Toast */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--green-dim); border: 1px solid var(--green);
+  color: var(--green); padding: .75rem 1.25rem; border-radius: 8px;
+  font-size: 13px; font-weight: 600; opacity: 0;
+  transition: opacity .3s; z-index: 999;
+}
+.toast.show { opacity: 1; }
+
+/* Loading */
+.spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .6s linear infinite; vertical-align: middle; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">Portfolio <span>Admin</span></div>
+    </div>
+
+    <div class="token-box">
+      <div class="token-label">GitHub Username</div>
+      <input class="token-input" id="gh-username" placeholder="aniketqw" value="aniketqw">
+    </div>
+
+    <div class="token-box">
+      <div class="token-label">Personal Access Token (optional)</div>
+      <input class="token-input" id="gh-token" type="password" placeholder="ghp_... (for private repos / higher rate limit)">
+    </div>
+
+    <button class="fetch-btn" id="fetch-btn" onclick="fetchRepos()">
+      Fetch My Repos
+    </button>
+
+    <div class="sidebar-section" id="stats-section" style="display:none">
+      <div class="section-title">Summary</div>
+      <div class="stat-row"><span class="stat-label">Total repos</span><span class="stat-val" id="stat-total">—</span></div>
+      <div class="stat-row"><span class="stat-label">Pinned (featured)</span><span class="stat-val amber" id="stat-pinned">—</span></div>
+      <div class="stat-row"><span class="stat-label">Included</span><span class="stat-val green" id="stat-included">—</span></div>
+      <div class="stat-row"><span class="stat-label">Excluded</span><span class="stat-val red" id="stat-excluded">—</span></div>
+    </div>
+
+    <div class="legend">
+      <div class="section-title">Legend</div>
+      <div class="legend-item"><div class="dot pinned"></div>Pinned — shown first, featured badge</div>
+      <div class="legend-item"><div class="dot included"></div>Included — appears in projects list</div>
+      <div class="legend-item"><div class="dot excluded"></div>Excluded — hidden from portfolio</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="toolbar">
+      <div class="toolbar-title" id="page-title">Repo Manager</div>
+      <input class="search-input" id="search" placeholder="Search repos…" oninput="render()" style="display:none">
+      <button class="export-btn" id="export-btn" onclick="exportConfig()" style="display:none">
+        ↓ Export projects_config.json
+      </button>
+    </div>
+
+    <div class="filter-row" id="filter-row" style="display:none">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('ai', this)">AI / ML</button>
+      <button class="filter-btn" onclick="setFilter('web', this)">Web Dev</button>
+      <button class="filter-btn" onclick="setFilter('other', this)">Other</button>
+      <button class="filter-btn" onclick="setFilter('pinned', this)">★ Pinned</button>
+      <button class="filter-btn" onclick="setFilter('excluded', this)">✕ Excluded</button>
+    </div>
+
+    <div id="repo-container">
+      <div class="empty">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-msg">Enter your username and fetch repos</div>
+        <div class="empty-sub">Then pin the ones you want featured and exclude the rest</div>
+      </div>
+    </div>
+
+    <div class="output-panel" id="output-panel" style="display:none">
+      <div class="output-header">
+        <span class="output-title mono">projects_config.json — copy → commit to your repo</span>
+        <button class="copy-btn" onclick="copyConfig()">Copy JSON</button>
+      </div>
+      <pre class="output-pre" id="output-pre"></pre>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────────
+let repos     = [];
+let pinned    = new Set();
+let excluded  = new Set();
+let overrides = {};
+let currentFilter = 'all';
+
+// ── Language colors ───────────────────────────────────────────────────────────
+const langColors = {
+  Python: '#3572A5', JavaScript: '#f1e05a', TypeScript: '#2b7489',
+  Java: '#b07219', 'C++': '#f34b7d', C: '#555555', Go: '#00ADD8',
+  Rust: '#dea584', Ruby: '#701516', HTML: '#e34c26', CSS: '#563d7c',
+  Shell: '#89e051', Jupyter: '#DA5B0B',
+};
+
+// ── Category guesser ──────────────────────────────────────────────────────────
+function guessCategory(repo) {
+  const text = [repo.name, repo.description || '', ...(repo.topics || [])].join(' ').toLowerCase();
+  const aiKw  = /\b(ml|ai|nlp|deep|learning|neural|cv|vision|llm|torch|tensorflow|model|detect|emotion|chatbot|rag)\b/;
+  const webKw = /\b(web|react|node|flask|django|next|api|frontend|backend|express|mern)\b/;
+  if (aiKw.test(text)) return 'ai';
+  if (webKw.test(text)) return 'web';
+  return 'other';
+}
+
+// ── Fetch ─────────────────────────────────────────────────────────────────────
+async function fetchRepos() {
+  const username = document.getElementById('gh-username').value.trim();
+  const token    = document.getElementById('gh-token').value.trim();
+  if (!username) return showToast('Enter a username first', 'error');
+
+  const btn = document.getElementById('fetch-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Fetching…';
+
+  const headers = { 'Accept': 'application/vnd.github+json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
+  try {
+    let all = [], page = 1;
+    while (true) {
+      const r = await fetch(
+        `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated`,
+        { headers }
+      );
+      if (!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
+      const batch = await r.json();
+      if (!batch.length) break;
+      all.push(...batch);
+      page++;
+    }
+    repos = all.filter(r => !r.fork && !r.archived);
+    showToast(`Loaded ${repos.length} repos`);
+    document.getElementById('stats-section').style.display = '';
+    document.getElementById('search').style.display = '';
+    document.getElementById('export-btn').style.display = '';
+    document.getElementById('filter-row').style.display = '';
+    document.getElementById('page-title').textContent = `${username}'s Repos (${repos.length})`;
+    updateStats();
+    render();
+    updateOutput();
+  } catch(e) {
+    showToast('Error: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = 'Fetch My Repos';
+  }
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render() {
+  const q      = document.getElementById('search').value.toLowerCase();
+  const filter = currentFilter;
+
+  let visible = repos.filter(r => {
+    const text = [r.name, r.description || '', ...(r.topics || [])].join(' ').toLowerCase();
+    if (q && !text.includes(q)) return false;
+    if (filter === 'pinned')   return pinned.has(r.name);
+    if (filter === 'excluded') return excluded.has(r.name);
+    if (filter === 'ai')       return guessCategory(r) === 'ai';
+    if (filter === 'web')      return guessCategory(r) === 'web';
+    if (filter === 'other')    return guessCategory(r) === 'other';
+    return true;
+  });
+
+  // Sort: pinned first
+  visible.sort((a, b) => {
+    if (pinned.has(a.name) && !pinned.has(b.name)) return -1;
+    if (!pinned.has(a.name) && pinned.has(b.name)) return 1;
+    return (b.stargazers_count || 0) - (a.stargazers_count || 0);
+  });
+
+  const container = document.getElementById('repo-container');
+
+  if (!visible.length) {
+    container.innerHTML = `<div class="empty"><div class="empty-icon">🔎</div><div class="empty-msg">No repos match</div></div>`;
+    return;
+  }
+
+  container.innerHTML = `<div class="repo-grid">${visible.map(repoCard).join('')}</div>`;
+}
+
+function repoCard(repo) {
+  const name    = repo.name;
+  const isPinned = pinned.has(name);
+  const isExcl  = excluded.has(name);
+  const cat     = guessCategory(repo);
+  const catIcon = cat === 'ai' ? '🧠' : cat === 'web' ? '🌐' : '📦';
+  const langColor = langColors[repo.language] || '#888';
+  const cls = isPinned ? 'pinned' : isExcl ? 'excluded' : (repo.homepage ? 'included' : '');
+
+  const topics = (repo.topics || []).slice(0, 4).map(t =>
+    `<span class="chip">${t}</span>`
+  ).join('');
+
+  const statusBadge = isPinned
+    ? '<span class="status-badge badge-pinned">pinned</span>'
+    : repo.homepage
+    ? '<span class="status-badge badge-live">live</span>'
+    : '<span class="status-badge badge-demo">demo</span>';
+
+  return `
+<div class="repo-card ${cls}" id="card-${name}">
+  <div class="card-actions">
+    <button class="action-btn pin-btn ${isPinned ? 'active' : ''}" onclick="togglePin('${name}',event)" title="Pin / feature this repo">★ Pin</button>
+    <button class="action-btn excl-btn ${isExcl ? 'active' : ''}" onclick="toggleExclude('${name}',event)" title="Exclude from portfolio">✕</button>
+  </div>
+  <div class="card-header">
+    <div class="card-icon">${catIcon}</div>
+    <div>
+      <div class="card-name">${name}${statusBadge}</div>
+    </div>
+  </div>
+  <div class="card-desc">${repo.description || '<em>No description</em>'}</div>
+  <div class="card-meta">
+    ${repo.language ? `<span class="meta-item"><span class="lang-dot" style="background:${langColor}"></span>${repo.language}</span>` : ''}
+    <span class="meta-item">★ ${repo.stargazers_count}</span>
+    <span class="meta-item">⑂ ${repo.forks_count}</span>
+    ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" style="color:var(--blue);font-size:11px">↗ Live</a>` : ''}
+  </div>
+  ${topics ? `<div class="topic-chips">${topics}</div>` : ''}
+</div>`;
+}
+
+// ── Toggle pin / exclude ──────────────────────────────────────────────────────
+function togglePin(name, e) {
+  e.stopPropagation();
+  if (pinned.has(name)) { pinned.delete(name); }
+  else { pinned.add(name); excluded.delete(name); }
+  updateStats(); render(); updateOutput();
+}
+
+function toggleExclude(name, e) {
+  e.stopPropagation();
+  if (excluded.has(name)) { excluded.delete(name); }
+  else { excluded.add(name); pinned.delete(name); }
+  updateStats(); render(); updateOutput();
+}
+
+// ── Filter ────────────────────────────────────────────────────────────────────
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ── Stats ─────────────────────────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('stat-total').textContent    = repos.length;
+  document.getElementById('stat-pinned').textContent   = pinned.size;
+  document.getElementById('stat-included').textContent = repos.length - excluded.size;
+  document.getElementById('stat-excluded').textContent = excluded.size;
+}
+
+// ── Output ────────────────────────────────────────────────────────────────────
+function updateOutput() {
+  const config = buildConfig();
+  const json   = JSON.stringify(config, null, 2);
+  document.getElementById('output-pre').textContent = json;
+  document.getElementById('output-panel').style.display = '';
+}
+
+function buildConfig() {
+  const username = document.getElementById('gh-username').value.trim();
+  const pinnedArr   = [...pinned];
+  const excludedArr = [...excluded, username]; // always exclude profile repo
+
+  const ov = {};
+  repos.filter(r => pinned.has(r.name)).forEach(r => {
+    ov[r.name] = {
+      title:       r.name.replace(/-/g, ' ').replace(/_/g, ' ')
+                         .replace(/\b\w/g, c => c.toUpperCase()),
+      description: r.description || '',
+      category:    guessCategory(r),
+      status:      r.homepage ? 'Live' : 'Demo',
+      tags:        (r.topics || []).slice(0, 4),
+    };
+    if (r.language && !ov[r.name].tags.includes(r.language)) {
+      ov[r.name].tags.unshift(r.language);
+    }
+    ov[r.name].tags = ov[r.name].tags.slice(0, 4);
+  });
+
+  return { pinned: pinnedArr, excluded: excludedArr, overrides: ov };
+}
+
+// ── Export ────────────────────────────────────────────────────────────────────
+function exportConfig() {
+  const config = buildConfig();
+  const blob   = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+  const url    = URL.createObjectURL(blob);
+  const a      = document.createElement('a');
+  a.href = url; a.download = 'projects_config.json';
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Exported projects_config.json');
+}
+
+function copyConfig() {
+  navigator.clipboard.writeText(document.getElementById('output-pre').textContent)
+    .then(() => showToast('Copied to clipboard!'));
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = type === 'error' ? 'var(--red-dim)'   : 'var(--green-dim)';
+  t.style.borderColor = type === 'error' ? 'var(--red)'      : 'var(--green)';
+  t.style.color       = type === 'error' ? 'var(--red)'      : 'var(--green)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>
