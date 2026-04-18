@@ -1,0 +1,56 @@
+name: Update Portfolio Projects
+
+on:
+  # Run every Sunday at midnight
+  schedule:
+    - cron: '0 0 * * 0'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch and update projects
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: aniketqw
+        run: python scripts/fetch_repos.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet projects.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add projects.json
+          git commit -m "chore: auto-update projects from GitHub repos [skip ci]"
+          git push
